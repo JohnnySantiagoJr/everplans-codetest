@@ -1,0 +1,24 @@
+.title,
+.link {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+}
+
+.title {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+  margin: 32px 57px 16px 154px;
+  text-align: center;
+}
+
+.link {
+  color: #5DB075;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  margin: 40px 32px 0 0;
+  text-align: right;
+}

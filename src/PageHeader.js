@@ -1,3 +1,5 @@
+import './PageHeader.css';
+
 function PageHeader(props) {
   function handleClick() {
     if (props.link === 'Log Out') {
@@ -9,10 +11,10 @@ function PageHeader(props) {
   }
   
   return (
-    <>
-      <h1>{props.title}</h1>
-      {props.link && <div onClick={handleClick}>{props.link}</div>}
-    </>
+    <div className="page-header">
+      <h1 className="title">{props.title}</h1>
+      {props.link && <div className="link" onClick={handleClick}>{props.link}</div>}
+    </div>
   )
 }
 
