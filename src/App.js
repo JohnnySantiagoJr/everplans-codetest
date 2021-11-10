@@ -1,11 +1,11 @@
-import './App.css';
 import  Feed from './Feed.js';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Feed />
-    </div>
+      <div className="App">
+        <Feed />
+      </div>
   );
 }
 
