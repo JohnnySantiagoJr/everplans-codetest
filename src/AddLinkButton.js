@@ -1,12 +1,12 @@
-import circle from './circle.svg';
-import plusSign from './plus-sign.svg';
+import circle from './images/circle.svg';
+import plusSign from './images/plus-sign.svg';
 import './AddLinkButton.css';
 
-export default function AddLinkButton() {
+export default function AddLinkButton(props) {
   return (
-    <div className="addLinkButton">
+    <button disabled={props.disabled}onClick={props.onClick} className="addLinkButton">
       <img className="buttonBackground" src={circle} alt="circle" />
       <img className="plusSign" src={plusSign} alt="plus sign" />
-    </div>
+    </button>
   )
 } 
