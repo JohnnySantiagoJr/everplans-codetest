@@ -1,26 +1,21 @@
-.addLinkButton {
-  background: #5DB075;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  left: 290px;
-  top: 644px;
+.button {
+  background-color: transparent;
+  border: none;
+  bottom: 10px;
+  padding: 0;
+  position: fixed;
+  right: 15px;
 }
 
-.plusSign {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 34px;
-  line-height: 41px;
+.button-background {
+  height: 70px;
+  width: 70px;
+}
+
+.plus-sign {
   position: absolute;
   width: 31.5px;
   height: 35.88px;
-  left: 20px;
+  left: 19px;
   top: 14px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #FFFFFF;
 }
