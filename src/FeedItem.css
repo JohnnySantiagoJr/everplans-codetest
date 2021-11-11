@@ -29,10 +29,14 @@
   text-overflow: ellipsis;
 }
 
+.description,
+.up-voted-vote-count {
+  font-weight: bold;
+}
+
 .description {
   color: #000000;
   font-size: 16px;
-  font-weight: bold;
   height: 18px;
   line-height: 21px;
   margin: 0 0 4px 0;
@@ -55,6 +59,10 @@
   margin: 0;
 }
 
+.up-voted-vote-count {
+  color: #5DB075;
+}
+
 .vote-button {
   background: transparent ;
   border: hidden;
@@ -65,11 +73,11 @@
   width: 27px;
 }
 
-.vote-icon {
+.vote-icon-with-low-opacity {
   opacity: 0.3;
 }
 
-.vote-icon:hover {
+.vote-icon-with-low-opacity:hover {
   filter: invert(60%) sepia(37%) saturate(463%) hue-rotate(85deg) brightness(95%) contrast(92%);
   opacity: 1.0;
 }
