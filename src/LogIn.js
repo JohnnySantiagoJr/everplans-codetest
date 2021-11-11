@@ -1,8 +1,8 @@
 import { GraphQLClient, gql } from "graphql-request";
-import { useState } from 'react';
 
 import PageHeader from "./PageHeader";
 import useForm from './useForm';
+import './LogIn.css';
 
 export default function LogIn(props) {
   const { values, handleChange, handleSubmit, disabled } = useForm(handleLogin);
@@ -44,35 +44,33 @@ export default function LogIn(props) {
   }
   
   return (
-    <>
+    <div className="log-in">
       <PageHeader 
         title="Log In"
         link="Sign Up"
         onClick={handleClick}
       />
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input 
-            name="email"
-            required
-            type="email" 
-            value={values.email} 
-            onChange={handleChange} 
-          />
-        </label>
-        <label>
-          Password
-          <input 
-            name="password"
-            required
-            type="password" 
-            value={values.password} 
-            onChange={handleChange} 
-          />
-        </label>
+      <form className="log-in-form" onSubmit={handleSubmit}>
+        <input 
+          className="email-input"
+          name="email"
+          placeholder="Email"
+          required
+          type="email" 
+          value={values.email} 
+          onChange={handleChange} 
+        />
+        <input 
+          className="password-input"
+          name="password"
+          placeholder="Password"
+          required
+          type="password" 
+          value={values.password} 
+          onChange={handleChange} 
+        />
         <input disabled={disabled} type="submit" value="Log In" />
       </form>
-    </>
+    </div>
   )
 };

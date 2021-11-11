@@ -13,7 +13,7 @@ function PageHeader(props) {
   return (
     <div className="page-header">
       <h1 className="title">{props.title}</h1>
-      {props.link && <div className="link" onClick={handleClick}>{props.link}</div>}
+      {<div className="link" onClick={handleClick}>{props.link}</div>}
     </div>
   )
 }

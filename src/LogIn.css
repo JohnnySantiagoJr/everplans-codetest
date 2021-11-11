@@ -1,0 +1,32 @@
+.log-in-form {
+  padding: 16px 16px 59Px 16px;
+}
+
+.log-in-form input {
+  background: #F6F6F6;
+  border: 1px solid #E8E8E8;
+  border-radius: 8px; 
+  box-sizing: border-box;
+  color: #BDBDBD;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  padding: 16px;
+  width: 100%;
+}
+
+.email-input {
+  margin-bottom: 16px;
+}
+
+.password-input {
+  margin-bottom: 167px;
+}
+
+.log-in-form input[type = 'submit'] {
+  background: #5DB075;
+  border-radius: 100px;
+  color: #FFFFFF;
+  font-weight: 600;
+}
