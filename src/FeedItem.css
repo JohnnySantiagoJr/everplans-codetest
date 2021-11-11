@@ -58,6 +58,7 @@
 .vote-button {
   background: transparent ;
   border: hidden;
+  cursor: pointer;
   float: right;
   height: 34px;
   padding: 17px 0 0 0;
@@ -65,6 +66,10 @@
 }
 
 .vote-icon {
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 22px;
+  opacity: 0.3;
+}
+
+.vote-icon:hover {
+  filter: invert(60%) sepia(37%) saturate(463%) hue-rotate(85deg) brightness(95%) contrast(92%);
+  opacity: 1.0;
 }
