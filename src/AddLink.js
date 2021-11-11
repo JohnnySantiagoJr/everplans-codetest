@@ -1,8 +1,8 @@
 import { GraphQLClient, gql } from "graphql-request";
-import { useState } from 'react';
 
 import PageHeader from "./PageHeader";
 import useForm from './useForm';
+import './AddLink.css';
 
 export default function AddLink(props) {
   const { values, handleChange, handleSubmit } = useForm(handlePost);
@@ -35,12 +35,13 @@ export default function AddLink(props) {
   }
 
   return (
-    <>
-      <PageHeader title="Got something to post?" />
+    <div className="add-link">
+      <h1 className="post-title">Got something to post?</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="label">
           URL
-          <input 
+          <input
+            className="input" 
             name="url" 
             required
             type="url" 
@@ -48,18 +49,21 @@ export default function AddLink(props) {
             onChange={handleChange} 
           />
         </label>
-        <label>
+        <hr className="url-input-line" />
+        <label className="label">
           Title
           <input 
+            className="input"
             name="description" 
             required
             type="text" 
             value={values.description} 
             onChange={handleChange} />
         </label>
-        <input type="submit" value="Post" />
-        <div onClick={props.onClose}>Cancel</div>
+        <hr className="title-input-line" />
+        <input className="post-button" type="submit" value="Post" />
+        <div className="cancel-button" onClick={props.onClose}>Cancel</div>
       </form>
-    </>
+    </div>
   )
 }

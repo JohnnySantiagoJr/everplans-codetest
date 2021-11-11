@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
+
 import './Modal.css';
 
-export default function Modal(props) {
+function Modal(props) {
   if (!props.show) {
+    document.body.style.overflow = 'unset';
+    
     return null;
+  } else {
+    document.body.style.overflow = 'hidden';
   }
   
   return (
@@ -12,4 +18,6 @@ export default function Modal(props) {
       </div>
     </div> 
   )
-}
+};
+
+export default Modal;
