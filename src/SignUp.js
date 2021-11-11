@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import PageHeader from "./PageHeader";
 import useForm from './useForm';
+import './SignUp.css';
 
 export default function SignUp(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,38 +39,31 @@ export default function SignUp(props) {
   
   return (
     <>
-      <div onClick={props.onClose}>X</div>
       <PageHeader title="Sign Up" />
-      <form onSubmit={handleSubmit}>
-      <label>
-        Name
+      <form className="sign-up-form" onSubmit={handleSubmit}>
         <input 
           name="name"
+          placeholder="Name"
           required
           type="text"  
           value={values.name} 
           onChange={handleChange} 
         />
-        </label>
-        <label>
-          Email
-          <input 
-            name="email"
-            required
-            type="email" 
-            value={values.email} onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password
-          <input 
-            name="password"
-            required
-            type="password"  
-            value={values.password} 
-            onChange={handleChange} 
-          />
-        </label>
+        <input 
+          name="email"
+          placeholder="Email"
+          required
+          type="email" 
+          value={values.email} onChange={handleChange}
+        />
+        <input 
+          name="password"
+          placeholder="Password"
+          required
+          type="password"  
+          value={values.password} 
+          onChange={handleChange} 
+        />
         <input 
           disabled={disabled} 
           type="submit" 

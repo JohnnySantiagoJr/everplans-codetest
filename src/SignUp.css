@@ -1,0 +1,33 @@
+.sign-up-form {
+  padding: 0 16px 51px 16px;
+}
+
+.sign-up-form input {
+  background: #F6F6F6;
+  border: 1px solid #E8E8E8;
+  border-radius: 8px; 
+  box-sizing: border-box;
+  color: #BDBDBD;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  margin-bottom: 16px;
+  padding: 16px;
+  width: 100%;
+}
+
+.email-input {
+  margin-bottom: 16px;
+}
+
+.sign-up-form input[type = 'password'] {
+  margin-bottom: 109px;
+}
+
+.sign-up-form input[type = 'submit'] {
+  background: #5DB075;
+  border-radius: 100px;
+  color: #FFFFFF;
+  font-weight: 600;
+}
