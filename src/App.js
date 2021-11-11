@@ -1,5 +1,4 @@
 import  Feed from './Feed.js';
-import './App.css';
 
 function App() {
   return (

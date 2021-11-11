@@ -8,6 +8,7 @@ import FeedItem from "./FeedItem";
 import LogIn from './LogIn';
 import PageHeader from "./PageHeader";
 import SignUp from './SignUp';
+import './Feed.css';
 
 function Feed(props) {
   const [showModal, setShowModal] = useState(false);
@@ -83,7 +84,7 @@ function Feed(props) {
             onClose={() => setShowModal(false)} />
         )}
       />
-      <ul>
+      <ul className="feed">
         {feed && feed.map((feedItem, index) => 
           <FeedItem 
             key={feedItem.id}

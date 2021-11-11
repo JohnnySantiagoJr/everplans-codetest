@@ -2,7 +2,7 @@ import { GraphQLClient, gql } from "graphql-request";
 import moment from 'moment';
 
 import thumbsUp from './images/thumbsUp.svg';
-
+import './FeedItem.css';
 
 export default function FeedItem(props) {
   const mutation = gql`
@@ -28,12 +28,14 @@ export default function FeedItem(props) {
   }
   
   return (
-    <li>
-      <div>{props.number}</div>
-      <h2>{props.description}</h2>
-      <p>{props.url}</p>
-      <p>{props.votes} votes by {props.postedBy.name} {moment(props.createdAt).fromNow()}</p>
-      <button disabled={props.disabled} onClick={handleClick}><img src={thumbsUp} alt="thumbs up" /></button>
+    <li className="item">
+      <div className="item-number">{props.number}</div>
+      <div className="item-text"> 
+        <h2 className="description">{props.description}</h2>
+        <p className="url">{props.url}</p>
+        <p className="votes-and-created-at">{props.votes} votes by {props.postedBy.name} {moment(props.createdAt).fromNow()}</p>
+      </div>
+      <button className="vote-button" disabled={props.disabled} onClick={handleClick}><img className="vote-icon" src={thumbsUp} alt="thumbs up" /></button>
     </li>
   )
 }
