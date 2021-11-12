@@ -1,28 +1,19 @@
-import { GraphQLClient, gql } from "graphql-request";
 import moment from 'moment';
 import { useState } from "react";
 
-import checkmark from './images/checkmark.svg';
-import thumbsUp from './images/thumbsUp.svg';
-import './FeedItem.css';
+import checkmark from "./images/checkmark.svg";
+import thumbsUp from "./images/thumbsUp.svg";
+import { request } from "./lib/api";
+import { upVoteMutation } from "./lib/graphqlQueries";
+import "./FeedItem.css";
 
-export default function FeedItem(props) {
+
+function FeedItem(props) {
   const [isUpVoted, setIsUpVoted] = useState(false);
-  const mutation = gql`
-    mutation upVote($id: ID!) {
-      upvote(id: $id) {
-        id
-        votes
-      }
-    }
-  `
-  const API_URL = 'http://localhost:4000/';
-  const graphQLClient = new GraphQLClient(API_URL);
-  const variables = {id: props.id};    
-
+  
   async function handleClick() {
     try {
-      const data  = await graphQLClient.request(mutation, variables)
+      const data  = await request(upVoteMutation, {id: props.id});
     } catch (error) {
       console.log("Error: " + error);
     }
@@ -61,4 +52,6 @@ export default function FeedItem(props) {
       </button>
     </li>
   )
-}
+};
+
+export default FeedItem;

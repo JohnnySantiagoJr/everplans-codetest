@@ -1,12 +1,13 @@
-import { GraphQLClient, gql } from "graphql-request";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Modal from './Modal/Modal';
-import AddLink from './AddLink';
-import AddLinkButton from './AddLinkButton';
+import { request } from "./lib/api";
+import { getFeedQuery } from "./lib/graphqlQueries";
+import Modal from "./Modal/Modal";
+import AddLink from "./AddLink";
+import AddLinkButton from "./AddLinkButton";
 import FeedItem from "./FeedItem";
 import PageHeader from "./PageHeader";
-import './Feed.css';
+import "./Feed.css";
 
 function Feed(props) {
   const [showModal, setShowModal] = useState(false);
@@ -15,39 +16,19 @@ function Feed(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   
-  const pageHeaderLink = props.isLoggedIn ? 'log-out' : 'sign-up';  
-  
-  const query = gql`
-    query {
-      feed {
-        id
-        url 
-        description
-        votes
-        createdAt
-        postedBy {
-          name
-        }
-      }
-    }
-  `
-  const API_URL = 'http://localhost:4000/';
-  const graphQLClient = new GraphQLClient(API_URL);
-  
+  const pageHeaderLink = props.isLoggedIn ? "log-out" : "sign-up";  
+    
   useEffect(async () => {
-    const data = await graphQLClient.request(query)
-  
+    const data = await request(getFeedQuery);
+    
     const feed = data.feed.sort((a, b) => b.votes - a.votes)
+    
     setFeed(feed);
   }, []);
   
   if (error) return <h1>Someting went wrong!</h1>;
   if (isLoading) return <h1>Loading...</h1>;
   
-  function setModalComponent(component) {
-    setShowModal(true);
-    setModalContent(component);
-  }
   function handleUpVote(id) {
     const newFeed = feed.map((feedItem) => {
       if (feedItem.id === id) {
@@ -60,6 +41,11 @@ function Feed(props) {
       return feedItem;
     });
     setFeed(newFeed);
+  }
+
+  function setModalComponent(component) {
+    setShowModal(true);
+    setModalContent(component);
   }
 
   return (

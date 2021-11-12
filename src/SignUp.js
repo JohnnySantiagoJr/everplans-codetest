@@ -1,9 +1,11 @@
-import { GraphQLClient, gql } from "graphql-request";
 import { useState } from 'react';
 
+import { request } from "./lib/api";
+import { signUpMutation } from "./lib/graphqlQueries";
 import PageHeader from "./PageHeader";
-import useForm from './useForm';
-import './SignUp.css';
+import useForm from "./useForm";
+import "./SignUp.css";
+
 
 export default function SignUp(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,26 +13,12 @@ export default function SignUp(props) {
   const [isSuccess, setIsSuccess] = useState(false);
   const { values, handleChange, handleSubmit, disabled } = useForm(handleSignUp);
   
-  const mutation = gql`
-    mutation SignUp($name: String!, $email: String!, $password: String!) {
-      signup(name: $name, email: $email, password: $password) {
-        token
-        user {
-          id
-        }
-      }
-    }
-  `
-  
-  const API_URL = 'http://localhost:4000/';
-  const graphQLClient = new GraphQLClient(API_URL);
-  const variables = {...values};
-
   async function handleSignUp() {
     try {
-      const data  = await graphQLClient.request(mutation, variables)
-        localStorage.setItem('token', data.signup.token);
-        window.location.href='/';
+      const data  = await request(signUpMutation, {...values});
+        
+      localStorage.setItem("token", data.signup.token);
+      window.location.href="/";
     } catch (error) {
       console.log("Error: " + error);
     }

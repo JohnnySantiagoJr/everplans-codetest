@@ -1,35 +1,18 @@
-import { GraphQLClient, gql } from "graphql-request";
-
+import { request } from "./lib/api";
+import { logInMutation } from "./lib/graphqlQueries";
 import PageHeader from "./PageHeader";
-import useForm from './useForm';
-import './LogIn.css';
+import useForm from "./useForm";
+import "./LogIn.css";
 
-export default function LogIn(props) {
+
+function LogIn(props) {
   const { values, handleChange, handleSubmit, disabled } = useForm(handleLogin);
-
-  const mutation = gql`
-    mutation LogIn($email: String!, $password: String!) {
-      login(email: $email, password: $password) {
-        token
-        user {
-          email
-          links {
-            url
-            description
-          }
-        }
-      }
-    }
-  `
-  const API_URL = 'http://localhost:4000/';
-  const graphQLClient = new GraphQLClient(API_URL);  
-  const variables = {...values};
 
   async function handleLogin() {
     try {
-      const data  = await graphQLClient.request(mutation, variables)
+      const data  = await request(logInMutation, {...values});
         
-      localStorage.setItem('token', data.login.token);
+      localStorage.setItem("token", data.login.token);
     } catch (error) {
       console.log("Error: " + error);
     }
@@ -73,3 +56,5 @@ export default function LogIn(props) {
     </div>
   )
 };
+
+export default LogIn;

@@ -1,31 +1,15 @@
-import { GraphQLClient, gql } from "graphql-request";
+import { requestWithAuth } from "./lib/api"
+import { postMutation } from "./lib/graphqlQueries";
+import useForm from "./useForm";
+import "./AddLink.css";
 
-import PageHeader from "./PageHeader";
-import useForm from './useForm';
-import './AddLink.css';
 
 export default function AddLink(props) {
   const { values, handleChange, handleSubmit } = useForm(handlePost);
-  
-  const mutation = gql`
-    mutation post($url: String!, $description: String!) {
-      post(url: $url, description: $description) {
-        id
-      }
-    }
-  `
-  
-  const API_URL = 'http://localhost:4000/';
-  const graphQLClient = new GraphQLClient(API_URL, {
-    headers: {
-      authorization: 'Bearer ' + localStorage.getItem('token'),
-    },
-  });
-  const variables = {...values};
 
   async function handlePost() {
     try {
-      const data  = await graphQLClient.request(mutation, variables)
+      const data  = await requestWithAuth(postMutation, {...values})
     } catch (error) {
       console.log("Error: " + error);
     }
