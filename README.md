@@ -2,7 +2,7 @@
 
 This project is my solution to the [Everplans Mobile Developer Codetest](https://github.com/everplans/mobile-codetest/blob/main/CODETEST.md). However, in discussions with Bernie Kravitz, SVP of Technology at Everplans, it was decided that the project should be completed for the browser and not a mobile device as it was originally intended. Additionally, since the supplied designs were for one mobile screen size my project should be viewed in your browser on a 375px width screen and is not responsive. 
 
-![dev tools screenshot](https://github.com/JohnnySantiagoJr/everplans-codetest/blob/6d1a8be102c04633c721f9a384f48d3a6bb4455c/src/images/dev-tools-screenshot.png)
+![dev tools screenshot](https://github.com/JohnnySantiagoJr/everplans-codetest/blob/75eb8200225f2bc15e4a761f1a378281604a2063/src/images/dev-tools-screenshot.png)
 
 ## To run the project locally
 
