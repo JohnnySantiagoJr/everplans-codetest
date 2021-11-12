@@ -6,7 +6,7 @@ This project is my solution to the [Everplans Mobile Codetest](https://github.co
 
 ## To run the project locally
 
-Once you have cloned it, in the project directory, you can run:
+Build and run the Docker image for the API supplied as part of the [codetest](https://github.com/everplans/mobile-codetest). Once that is up and running clone my project and in the root directory run:
 
 ### `npm start`
 
