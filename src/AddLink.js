@@ -9,7 +9,7 @@ export default function AddLink(props) {
 
   async function handlePost() {
     try {
-      const data  = await requestWithAuth(postMutation, {...values})
+      await requestWithAuth(postMutation, {...values})
     } catch (error) {
       console.log("Error: " + error);
     }

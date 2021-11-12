@@ -13,7 +13,7 @@ function FeedItem(props) {
   
   async function handleClick() {
     try {
-      const data  = await request(upVoteMutation, {id: props.id});
+      await request(upVoteMutation, {id: props.id});
     } catch (error) {
       console.log("Error: " + error);
     }

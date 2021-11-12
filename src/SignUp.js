@@ -8,9 +8,7 @@ import "./SignUp.css";
 
 
 export default function SignUp(props) {
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isSuccess, setIsSuccess] = useState(false);
   const { values, handleChange, handleSubmit, disabled } = useForm(handleSignUp);
   
   async function handleSignUp() {
@@ -21,6 +19,7 @@ export default function SignUp(props) {
       window.location.href="/";
     } catch (error) {
       console.log("Error: " + error);
+      setError(error);
     }
   }
   
@@ -54,7 +53,7 @@ export default function SignUp(props) {
         <input 
           disabled={disabled} 
           type="submit" 
-          value={isLoading ? "Signing Up..." : "Sign Up"} 
+          value="Sign Up" 
         />
         {error && <h1>Someting went wrong!</h1>}
       </form>

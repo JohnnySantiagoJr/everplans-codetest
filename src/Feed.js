@@ -13,21 +13,28 @@ function Feed(props) {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState();
   const [feed, setFeed] = useState();
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   
   const pageHeaderLink = props.isLoggedIn ? "log-out" : "sign-up";  
     
-  useEffect(async () => {
-    const data = await request(getFeedQuery);
-    
-    const feed = data.feed.sort((a, b) => b.votes - a.votes)
-    
-    setFeed(feed);
+  useEffect(() => {
+    async function getFeed() {
+      try {
+        const data = await request(getFeedQuery);
+  
+        const feed = data.feed.sort((a, b) => b.votes - a.votes);
+        
+        setFeed(feed);
+      } catch (error) {
+        console.log("Error: " + error);
+        setError(error);
+      }
+    };
+
+    getFeed();
   }, []);
   
   if (error) return <h1>Someting went wrong!</h1>;
-  if (isLoading) return <h1>Loading...</h1>;
   
   function handleUpVote(id) {
     const newFeed = feed.map((feedItem) => {
