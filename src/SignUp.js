@@ -30,16 +30,15 @@ export default function SignUp(props) {
     try {
       const data  = await graphQLClient.request(mutation, variables)
         localStorage.setItem('token', data.signup.token);
+        window.location.href='/';
     } catch (error) {
       console.log("Error: " + error);
     }
-    
-    props.onClose();
   }
   
   return (
     <>
-      <PageHeader title="Sign Up" />
+      <PageHeader title="Sign Up" link="log-in"/>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <input 
           name="name"

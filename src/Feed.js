@@ -5,9 +5,7 @@ import Modal from './Modal/Modal';
 import AddLink from './AddLink';
 import AddLinkButton from './AddLinkButton';
 import FeedItem from "./FeedItem";
-import LogIn from './LogIn';
 import PageHeader from "./PageHeader";
-import SignUp from './SignUp';
 import './Feed.css';
 
 function Feed(props) {
@@ -16,9 +14,8 @@ function Feed(props) {
   const [feed, setFeed] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') ? 
-    true : false);
-  const pageHeaderLink = isLoggedIn ? 'Log Out' : 'Log In';  
+  
+  const pageHeaderLink = props.isLoggedIn ? 'log-out' : 'sign-up';  
   
   const query = gql`
     query {
@@ -47,12 +44,6 @@ function Feed(props) {
   if (error) return <h1>Someting went wrong!</h1>;
   if (isLoading) return <h1>Loading...</h1>;
   
-  function handleLogIn() {
-    setIsLoggedIn(true);
-  }
-  function handleLogOut() {
-    setIsLoggedIn(false);
-  }
   function setModalComponent(component) {
     setShowModal(true);
     setModalContent(component);
@@ -76,13 +67,7 @@ function Feed(props) {
       <PageHeader
         title={"Feed"}
         link={pageHeaderLink}
-        onLogOut={handleLogOut}
-        onClick={() => setModalComponent(
-          <LogIn 
-            onLogIn={handleLogIn}
-            onClick={() => setModalComponent(<SignUp onClose={() => setShowModal(false)} />)} 
-            onClose={() => setShowModal(false)} />
-        )}
+        onLogOut={props.onLogOut}
       />
       <ul className="feed">
         {feed && feed.map((feedItem, index) => 
@@ -96,12 +81,12 @@ function Feed(props) {
             createdAt={feedItem.createdAt}
             postedBy={feedItem.postedBy}
             onUpVote={(id) => handleUpVote(id)}
-            disabled={!isLoggedIn}
+            disabled={!props.isLoggedIn}
           />
         )}
       </ul>
       <AddLinkButton 
-        disabled={!isLoggedIn}
+        disabled={!props.isLoggedIn}
         onClick={() => setModalComponent(<AddLink onClose={() => setShowModal(false)} />)} 
       />
     
@@ -110,6 +95,6 @@ function Feed(props) {
       </Modal>  
     </>
   )
-}
+};
 
 export default Feed;

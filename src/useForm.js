@@ -5,7 +5,7 @@ function useForm(callback) {
   const [disabled, setDisabled] = useState(true);
 
   const handleSubmit = async (event) => {
-    if (event) event.preventDefault();
+    event.preventDefault();
     callback(); 
   };
 

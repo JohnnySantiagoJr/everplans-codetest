@@ -35,7 +35,6 @@ export default function LogIn(props) {
     }
 
     props.onLogIn();
-    props.onClose();
   }
 
   function handleClick() {
@@ -47,7 +46,7 @@ export default function LogIn(props) {
     <div className="log-in">
       <PageHeader 
         title="Log In"
-        link="Sign Up"
+        link="sign-up"
         onClick={handleClick}
       />
       <form className="log-in-form" onSubmit={handleSubmit}>
